@@ -1,0 +1,34 @@
+{
+  "name": "ethan/api_bestloc",
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "EthanPaleyron",
+      "email": "epaleyron@edenschool.fr"
+    }
+  ],
+  "scripts": {
+    "serve": [
+      "Composer\\Config::disableProcessTimeout",
+      "php -S 0.0.0.0:3000 -t public"
+    ]
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/EthanPaleyron/lib_bestloc.git"
+    }
+  ],
+  "require": {
+    "ethan/lib_bestloc": "dev-main",
+    "slim/slim": "^4.14",
+    "slim/psr7": "^1.7",
+    "nyholm/psr7": "^1.8",
+    "nyholm/psr7-server": "^1.1",
+    "laminas/laminas-diactoros": "^3.5"
+  }
+}
