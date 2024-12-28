@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/EthanPaleyron/lib_bestloc.git",
-                "reference": "8aa78afbf93254bb36ee764828c301d6e3879404"
+                "reference": "ea0bbf0a066d6db505861c2154b16d7f2ae9fe53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/EthanPaleyron/lib_bestloc/zipball/8aa78afbf93254bb36ee764828c301d6e3879404",
-                "reference": "8aa78afbf93254bb36ee764828c301d6e3879404",
+                "url": "https://api.github.com/repos/EthanPaleyron/lib_bestloc/zipball/ea0bbf0a066d6db505861c2154b16d7f2ae9fe53",
+                "reference": "ea0bbf0a066d6db505861c2154b16d7f2ae9fe53",
                 "shasum": ""
             },
             "require": {
@@ -44,7 +44,7 @@
                 "source": "https://github.com/EthanPaleyron/lib_bestloc/tree/main",
                 "issues": "https://github.com/EthanPaleyron/lib_bestloc/issues"
             },
-            "time": "2024-12-20T16:07:24+00:00"
+            "time": "2024-12-21T23:18:53+00:00"
         },
         {
             "name": "fig/http-message-util",

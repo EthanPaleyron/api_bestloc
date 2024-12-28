@@ -1,19 +1,19 @@
 <?php
 namespace App\Controller;
 use App\Renderer\JsonRenderer;
-use BestLoc\Service\CustomerService;
-use BestLoc\Entity\Customer;
+use BestLoc\Service\VehiculeService;
+use BestLoc\Entity\Vehicule;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-class CustomerController
+class VehiculeController
 {
-    private CustomerService $customer;
+    private VehiculeService $vehicule;
     private JsonRenderer $renderer;
 
     public function __construct()
     {
-        $this->customer = new CustomerService();
+        $this->vehicule = new VehiculeService();
         $this->renderer = new JsonRenderer();
     }
 
@@ -25,19 +25,19 @@ class CustomerController
             return $this->renderer->json($res, ["error" => "No id specified"], [], 404);
         }
 
-        $customer = $this->customer->find($id);
+        $vehicule = $this->vehicule->find($id);
 
-        if (!$customer instanceof Customer) {
-            return $this->renderer->json($res, ["error" => "Customer not found"], [], 404);
+        if (!$vehicule instanceof Vehicule) {
+            return $this->renderer->json($res, ["error" => "vehicule not found"], [], 404);
         }
 
-        return $this->renderer->json($res, $customer);
+        return $this->renderer->json($res, $vehicule);
     }
 
     public function getAll(Request $req, Response $res, $args): Response
     {
-        $customer = $this->customer->findAll();
-        return $this->renderer->json($res, $customer);
+        $vehicules = $this->vehicule->findAll();
+        return $this->renderer->json($res, $vehicules);
     }
 
     public function create(Request $req, Response $res): Response
@@ -48,13 +48,13 @@ class CustomerController
             return $this->renderer->json($res, ["error" => "Invalid input data"], [], 400);
         }
 
-        $newCustomer = $this->customer->create($data);
+        $newvehicule = $this->vehicule->create($data);
 
-        if (!$newCustomer instanceof Customer) {
-            return $this->renderer->json($res, ["error" => "Failed to create customer"], [], 500);
+        if (!$newvehicule instanceof Vehicule) {
+            return $this->renderer->json($res, ["error" => "Failed to create vehicule"], [], 500);
         }
 
-        return $this->renderer->json($res, $newCustomer, [], 201);
+        return $this->renderer->json($res, $newvehicule, [], 201);
     }
 
     public function update(Request $req, Response $res, $args): Response
@@ -66,13 +66,13 @@ class CustomerController
             return $this->renderer->json($res, ["error" => "Invalid input data"], [], 400);
         }
 
-        $updatedCustomer = $this->customer->update($data);
+        $updatedvehicule = $this->vehicule->update($data);
 
-        if (!$updatedCustomer instanceof Customer) {
-            return $this->renderer->json($res, ["error" => "Customer not found or update failed"], [], 404);
+        if (!$updatedvehicule instanceof Vehicule) {
+            return $this->renderer->json($res, ["error" => "vehicule not found or update failed"], [], 404);
         }
 
-        return $this->renderer->json($res, $updatedCustomer);
+        return $this->renderer->json($res, $updatedvehicule);
     }
 
     public function delete(Request $req, Response $res, $args): Response
@@ -83,12 +83,12 @@ class CustomerController
             return $this->renderer->json($res, ["error" => "No id specified"], [], 400);
         }
 
-        $result = $this->customer->delete($id);
+        $result = $this->vehicule->delete($id);
 
         if (!$result) {
-            return $this->renderer->json($res, ["error" => "Customer not found or delete failed"], [], 404);
+            return $this->renderer->json($res, ["error" => "vehicule not found or delete failed"], [], 404);
         }
 
-        return $this->renderer->json($res, ["message" => "Customer deleted successfully"], [], 200);
+        return $this->renderer->json($res, ["message" => "vehicule deleted successfully"], [], 200);
     }
 }
